@@ -70,7 +70,7 @@ const Home = () => {
                         <MdOutlineDelete className='text-2xl text-red-600'/>
                       </Link>
                     </div>
-                    {book.author}
+                    
                   </td>
               </tr>
             ))}
