@@ -1,16 +1,16 @@
 import React,{useEffect, useState} from 'react'
 
 const SignUp = () => {
-    const [username, setUsername] = useState('')
-    const [password,setPassword] = useState('')
-    const [error,setError] = useState('')
-    const [passwordCheck, setPasswordCheck] = useState('')
-    const [email,setEmail] = useState('')
-    
-
-    
-    const passwordTest =(password)=>{
-      const isLongEnough = password.length >= 8;
+  const [username, setUsername] = useState('')
+  const [password,setPassword] = useState('')
+  const [error,setError] = useState('')
+  const [passwordCheck, setPasswordCheck] = useState('')
+  const [email,setEmail] = useState('')
+  
+  
+  
+  const passwordTest =(password)=>{
+    const isLongEnough = password.length >= 8;
       const hasLowercase = /[a-z]/.test(password);
       const hasUppercase = /[A-Z]/.test(password);
       const hasNumber = /[0-9]/.test(password);
@@ -50,6 +50,7 @@ const SignUp = () => {
         }
           
         },[passwordTest(password)])
+      
 
         
 
