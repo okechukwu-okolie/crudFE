@@ -10,7 +10,7 @@ const ShowBook = () => {
 
 
   const [book, setBook] = useState({})
-  const [loading,setLoading] = usestate(false)
+  const [loading,setLoading] = useState(false)
   const {id} = useParams()
 
   useEffect(()=>{
