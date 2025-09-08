@@ -8,6 +8,7 @@ import EditBook from './pages/EditBook'
 import DeleteBook from './pages/DeleteBook'
 import ApiDisplay from './apiDisplay/ApiDisplay'
 import MainApp from './todoApp/MainApp'
+import Crud from './CRUD/Crud'
 
 function App() {
   
@@ -23,7 +24,8 @@ function App() {
     // </Routes>
     <div>
       {/* <ApiDisplay/> */}
-      <MainApp/>
+      {/* <MainApp/> */}
+      <Crud/>
     </div>
   )
 }
