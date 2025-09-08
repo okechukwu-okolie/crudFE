@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from 'react'
-import axios from 'axios'
-import { useParams } from 'react-router-dom'
+// import axios from 'axios'
+import { useParams, } from 'react-router-dom'
 import BackButton from '../components/BackButton'
 import Spinner from '../components/Spinner'
 
@@ -15,16 +15,23 @@ const ShowBook = () => {
 
   useEffect(()=>{
     setLoading(true)
-    axios.get(`http://localhost:3000/books/${id}`)
-          .then((response)=>{
-            setBook(response.data)
-            setLoading(false)
-          })
-          .catch((error)=>{
-            console.log(error)
-            setLoading(false)
-          })
+    // axios.get(`http://localhost:3000/books/${id}`)
+    //       .then((response)=>{
+    //         setBook(response.data)
+    //         setLoading(false)
+    //       })
+    //       .catch((error)=>{
+    //         console.log(error)
+    //         setLoading(false)
+    //       })
+    fetch('https://jsonplaceholder.typicode.com/todos')
+    .then(response => response.json())
+    .then(json =>console.log(json))
   },[])
+
+  // useEffect(()=>{
+    
+  // })
 
 
   return (

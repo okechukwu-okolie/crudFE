@@ -11,8 +11,11 @@ const Home = () => {
   const [loading, setLoading] = useState(false)
 
   useEffect(()=>{
+    if(!id){
+      return;
+    }
     setLoading(true)
-    axios.get('http://localhost:3000/books')
+    fetch('https://jsonplaceholder.typicode.com/todos')
           .then((response)=>{
             setBooks(response.data.data)
             setLoading(false)
@@ -21,7 +24,39 @@ const Home = () => {
             console.log(error)
             setLoading(false)
           })
+    //         fetch('https://jsonplaceholder.typicode.com/todos')
+    // .then(response => response.json())
+    // .then(json =>console.log(json))
   },[])
+
+  /*
+  FOR GETING FROM A DATABASE.
+  useEffect(() => {
+    // Only fetch if a valid id exists
+    if (!id) return; 
+
+    setLoading(true);
+
+    axios.get(`http://localhost:3000/books/${id}`)
+        .then((response) => {
+            setBook(response.data);
+            setLoading(false);
+        })
+        .catch((error) => {
+            console.error("Error fetching book:", error);
+            setLoading(false);
+        });
+}, [id]); // CORRECTED: id is now in the dependency array
+
+Explanation of the Correction:
+By adding id to the dependency array [id], the useEffect hook will re-run whenever the id value changes. This ensures that a new API call is made to fetch the correct book data for the new id, making the component dynamic and reactive to route changes.
+  
+  
+  
+  
+  
+  
+  */
 
 
   return (
@@ -38,35 +73,35 @@ const Home = () => {
             <tr>
               <th className='border border-slate-600 rounded-md'>No</th>
               <th className='border border-slate-600 rounded-md'>Title</th>
-              <th className='border border-slate-600 rounded-md max-md:hidden'>Author</th>
-              <th className='border border-slate-600 rounded-md max-md:hidden'>Publish Year</th>
+              {/* <th className='border border-slate-600 rounded-md max-md:hidden'>Author</th>
+              <th className='border border-slate-600 rounded-md max-md:hidden'>Publish Year</th> */}
               <th className='border border-slate-600 rounded-md '>Operations</th>
             </tr>
           </thead>
           <tbody>
             {books.map((book,index)=>(
-              <tr key={book._id} className='h-8'>
+              <tr key={book.id} className='h-8'>
                   <td className='border border-slate-700 rounded-md text-center'>
                     {index + 1}
                   </td>
                   <td className="border border-slate-700 rounded-md text-center">
                     {book.title}
                   </td>
-                  <td className="border border-slate-700 rounded-md text-center max-md:hidden">
+                  {/* <td className="border border-slate-700 rounded-md text-center max-md:hidden">
                     {book.author}
                   </td>
                   <td className="border border-slate-700 rounded-md text-center max-md:hidden">
                     {book.publishYear}
-                  </td>
+                  </td> */}
                   <td className="border border-slate-700 rounded-md text-center ">
                     <div className="flex justify-center gap-x-4 ">
-                      <Link to={`/books/details/${book._id}`}>
+                      <Link to={`/books/details/${book.id}`}>
                         <BsInfoCircle className='text-2xl text-green-800'/>
                       </Link>
-                       <Link to={`/books/edit/${book._id}`}>
+                       <Link to={`/books/edit/${book.id}`}>
                         <AiOutlineEdit className='text-2xl text-yellow-500'/>
                       </Link>
-                       <Link to={`/books/delete/${book._id}`}>
+                       <Link to={`/books/delete/${book.id}`}>
                         <MdOutlineDelete className='text-2xl text-red-600'/>
                       </Link>
                     </div>
